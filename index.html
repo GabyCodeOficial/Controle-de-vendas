@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Compras</title>
+    <script>
+        fetch('/api/dados')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error("Erro ao buscar dados:", error));
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Cadastrar Produto</h2>
+    <form id="productForm">
+        <input type="text" id="productName" placeholder="Nome do Produto" required>
+        <input type="text" id="productCode" placeholder="Código do Produto" required>
+        <input type="number" id="productPrice" placeholder="Preço" required>
+        <input type="number" id="productStock" placeholder="Estoque" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Registrar Compra</h2>
+    <form id="purchaseForm">
+        <input type="text" id="purchaseCode" placeholder="Código do Produto" required>
+        <input type="number" id="purchaseQuantity" placeholder="Quantidade" required>
+        <button type="submit">Registrar Compra</button>
+    </form>
+
+    <button onclick="generateReports()">Gerar Relatórios</button>
+
+    <script>
+        async function sendData(url, data) {
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                }
+
+                const result = await response.text();
+                alert(result);
+            } catch (error) {
+                console.error("Erro ao enviar dados:", error);
+                alert("Erro ao conectar com o servidor!");
+            }
+        }
+
+        async function generateReports() {
+            try {
+                const response = await fetch("/generate-reports");
+
+                if (!response.ok) {
+                    throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                }
+
+                alert(await response.text());
+            } catch (error) {
+                console.error("Erro ao gerar relatório:", error);
+                alert("Erro ao conectar com o servidor!");
+            }
+        }
+
+        document.getElementById("productForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const data = {
+                name: document.getElementById("productName").value,
+                code: document.getElementById("productCode").value,
+                price: parseFloat(document.getElementById("productPrice").value),
+                stock: parseInt(document.getElementById("productStock").value)
+            };
+
+            if (!data.name || !data.code || isNaN(data.price) || isNaN(data.stock)) {
+                alert("Preencha todos os campos corretamente!");
+                return;
+            }
+
+            sendData("http://localhost:3000/products", data);
+
+        });
+
+        document.getElementById("purchaseForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const data = {
+                code: document.getElementById("purchaseCode").value,
+                quantity: parseInt(document.getElementById("purchaseQuantity").value)
+            };
+
+            if (!data.code || isNaN(data.quantity)) {
+                alert("Preencha todos os campos corretamente!");
+                return;
+            }
+
+            sendData("/register-purchase", data);
+        });
+    </script>
+</body>
+
+</html>
