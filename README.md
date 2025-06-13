@@ -5,10 +5,10 @@
 <br> Então primeiro no terminal rode python3 db.py </br>
 
 ---Nesse projeto utilizo o Node para fazer a coneção com o server (Utilizo o próprio PC como Servidor)---
-O procimo passo será habilitar a conexão do código com o server também no terminal coloque: node server.js
+<br> O procimo passo será habilitar a conexão do código com o server também no terminal coloque: node server.js </br>
 ---Deve aparecer uma menssagem diendo que conectou a porta 3000---
-
-Clique em cima da mensagem e você será direcionado para a web
+<br></br>
+<br> Clique em cima da mensagem e você será direcionado para a web </br>
 
 
 
