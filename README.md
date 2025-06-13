@@ -2,7 +2,7 @@
 
 # COMO USAR: #
 ---O python está programado para criar automticamente  um banco de dados no SQLite;---
-Então primeiro no terminal rode python3 db.py
+<br> Então primeiro no terminal rode python3 db.py </br>
 
 ---Nesse projeto utilizo o Node para fazer a coneção com o server (Utilizo o próprio PC como Servidor)---
 O procimo passo será habilitar a conexão do código com o server também no terminal coloque: node server.js
