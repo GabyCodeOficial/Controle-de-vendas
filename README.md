@@ -1,6 +1,6 @@
 # Controle-de-vendas
 
-<h1> COMO USAR: </h1>
+<h2> COMO USAR: </h2>
 ---O python está programado para criar automticamente  um banco de dados no SQLite;---
 <br> Então primeiro no terminal rode python3 db.py </br>
 
