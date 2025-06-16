@@ -13,7 +13,7 @@
 
 
 
-<h2> Este projeto está em faze inicial, precisam ser implementadas funcionalidades e caracteristicas de desing </h2>
+<h3> Este projeto está em faze inicial, precisam ser implementadas funcionalidades e caracteristicas de desing </h3>
 
 Pontos a serem revisados:
 - erro no comando 'node server.js'
@@ -43,7 +43,7 @@ diferentes tipos de usuários.
 
 
 
-<h2> opcionis </h2>
+<h3> opcionis </h3>
 - Usabilidade:
 Interface intuitiva e de fácil uso.
 
