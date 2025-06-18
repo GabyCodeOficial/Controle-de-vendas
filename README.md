@@ -3,6 +3,9 @@
 <h3> COMO USAR: </h3>
 
 <h4> Criando arquivos e ligando server</h4>
+Instalar ou atualizar node
+comando para atualização: sudo apt upgrade
+
 ---O python está programado para criar automticamente  um banco de dados no SQLite;---
 <br> Então primeiro no terminal rode python3 db.py </br>
 
